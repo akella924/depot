@@ -1,0 +1,8 @@
+@import "bootstrap-sprockets";
+
+$body-dg: #eee;
+$brand-primary: #2dcc70;
+@import "bootstrap";
+ .field_with_errors{
+   @extend  .has-error;
+ }
