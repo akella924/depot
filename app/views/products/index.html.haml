@@ -1,28 +1,40 @@
-%h1 Listing products
+%h1 Список продуктов
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th Description
-      %th Price
-      %th Weight
-      %th
-      %th
-      %th
-      
-  %tbody
-    - @products.each do |product|
-      %tr
-        %td= product.name
-        %td= product.description
-        %td= product.price
-        %td= product.weight
-        %td= link_to 'Show', product
-        %td= link_to 'Edit', edit_product_path(product)
-        %td= link_to 'Destroy', product, :method => :delete, :data => { :confirm => 'Are you sure?' }
+%ul.list-group
+  %b
+    .li.list-group-item-info
+      .row
+        .col-md-3
+          .span.glyphicon.glyphicon-flash
+          Название
+        .col-md-3
+          .span.glyphicon.glyphicon-info-sign
+          Описание
+        .col-md-3
+          .span.glyphicon.glyphicon-ruble
+          Цена
+        .col-md-3
+          .span.glyphicon.glyphicon-scale
+          Вес
+  %br
 
-%br
+  - @products.each do |product|
+    %li.list-group-item
+      .row
+        .col-md-3
+          = product.name
+        .col-md-3
+          = product.description
+        .col-md-3
+          =number_to_currency(product.price, locale: :ru)
+        .col-md-3
+          = product.weight
+    .row
 
-= link_to 'New Product', new_product_path
+      = link_to 'Посмотреть', product
+      = link_to 'Изменить', edit_product_path(product)
+      = link_to 'Удалить', product, :method => :delete, :data => { :confirm => 'Уверены?' }
+    %br
+
+= link_to 'Новый товар', new_product_path
 = paginate @products
