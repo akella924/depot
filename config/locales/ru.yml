@@ -4,7 +4,28 @@ ru:
       product:
         name: Название
         price: Цена
-        description: Описание
         weight: Вес
+        description: Описание
     models:
       product: Товар
+  views:
+    pagination:
+      first: "&laquo; Первая"
+      last: "Последняя &raquo;"
+      previous: "&lsaquo; Предыдущая"
+      next: "Следующая &rsaquo;"
+      truncate: "&hellip;"
+    helpers:
+      page_entries_info:
+        one_page:
+          display_entries:
+            zero: "Не найдено %{entry_name} "
+            one: "Вывод <b>1</b> %{entry_name}"
+            other: "Вывод <b>all %{count}</b> %{entry_name}"
+        more_pages:
+          display_entries: "Вывод %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> of <b>%{total}</b> in total"
+    product:
+      name: Название
+      price: Цена
+      weiht: вес
+      description: Описание
