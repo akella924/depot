@@ -1,40 +1,45 @@
 %h1 Список продуктов
-
+= link_to 'Новый товар', new_product_path, class: "btn btn-primary"
+= paginate @products
+%br
+  %br
 %ul.list-group
   %b
     .li.list-group-item-info
       .row
-        .col-md-3
+        .col-md-2
           .span.glyphicon.glyphicon-flash
           Название
-        .col-md-3
+        .col-md-2
           .span.glyphicon.glyphicon-info-sign
           Описание
-        .col-md-3
+        .col-md-2
           .span.glyphicon.glyphicon-ruble
           Цена
-        .col-md-3
+        .col-md-2
           .span.glyphicon.glyphicon-scale
           Вес
+        .col-md-3
+          .span.glyphicon.glyphicon-pencil
+          Редактирование
   %br
 
   - @products.each do |product|
     %li.list-group-item
       .row
-        .col-md-3
+        .col-md-2
           = product.name
-        .col-md-3
+        .col-md-2
           = product.description
-        .col-md-3
+        .col-md-2
           =number_to_currency(product.price, locale: :ru)
-        .col-md-3
+        .col-md-2
           = product.weight
-    .row
-
-      = link_to 'Посмотреть', product
-      = link_to 'Изменить', edit_product_path(product)
-      = link_to 'Удалить', product, :method => :delete, :data => { :confirm => 'Уверены?' }
+        .col-md-4
+          .btn-group
+            = link_to 'Посмотреть', product, class: "btn btn-primary"
+            = link_to 'Изменить', edit_product_path(product), class: "btn btn-info"
+            = link_to 'Удалить', product, :method => :delete, :data => { :confirm => 'Уверены?' }, class: "btn btn-danger"
     %br
 
-= link_to 'Новый товар', new_product_path
 = paginate @products

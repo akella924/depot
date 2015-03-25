@@ -8,10 +8,10 @@
   = @line_item.price
 %p
   %b Cart:
-  = @line_item.cart
+  = @line_item.cart.id
 %p
   %b Product:
-  = @line_item.product
+  = @line_item.product.name
 
 = link_to 'Редактировать', edit_line_item_path(@line_item)
 \|

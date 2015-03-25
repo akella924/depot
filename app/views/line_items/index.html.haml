@@ -1,27 +1,44 @@
-%h1 Просмотр корзины
-
-%table
-  %thead
-    %tr
-      %th Количество
-      %th Цена
-      %th Корзина
-      %th Продукт
-      %th
-      %th
-      %th
-      
-  %tbody
-    - @line_items.each do |line_item|
-      %tr
-        %td= line_item.quantity
-        %td= line_item.price
-        %td= line_item.cart
-        %td= line_item.product
-        %td= link_to 'Показать', line_item
-        %td= link_to 'Изменить', edit_line_item_path(line_item)
-        %td= link_to 'Удалить', line_item, :method => :delete, :data => { :confirm => 'Вы уверены?' }
+%h1 Список элементов корзины
+= link_to 'Новый элемент корзины', new_line_item_path, class: "btn btn-primary"
 
 %br
+  %br
+%ul.list-group
+  %b
+    .li.list-group-item-info
+      .row
+        .col-md-2
+          .span.glyphicon.glyphicon-info-sign
+          Количество
+        .col-md-2
+          .span.glyphicon.glyphicon-ruble
+          Цена
+        .col-md-2
+          .span.glyphicon.glyphicon-shopping-cart
+          Номер корзины
+        .col-md-2
+          .span.glyphicon.glyphicon-barcode
+          Товар
+        .col-md-3
+          .span.glyphicon.glyphicon-pencil
+          Редактирование
+  %br
 
-= link_to 'Новый элемент корзины', new_line_item_path
+  - @line_items.each do |line_item|
+    %li.list-group-item
+      .row
+        .col-md-2
+          = line_item.quantity
+        .col-md-2
+          = line_item.price
+        .col-md-2
+          = line_item.cart.id
+        .col-md-2
+          = line_item.product.name
+        .col-md-4
+          .btn-group
+            = link_to 'Показать', line_item, class: "btn btn-primary"
+            = link_to 'Изменить', edit_line_item_path(line_item), class: "btn btn-info"
+            = link_to 'Удалить', line_item, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: "btn btn-danger"
+
+%br
