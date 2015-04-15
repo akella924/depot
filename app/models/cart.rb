@@ -9,4 +9,11 @@ class Cart < ActiveRecord::Base
     line_items.quantity += 1
     line_items.save
   end
+
+  def total_line_items
+    line_items.sum(:quantity)
+  end
+  def total_amount
+    line_items.sum("quantity*line_items.price")
+  end
 end

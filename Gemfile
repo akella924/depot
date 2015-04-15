@@ -32,11 +32,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'haml-rails'
-gem 'bootstrap-sass'
-gem 'rails-i18n'
-gem 'kaminari'
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -46,7 +41,14 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'haml-rails'
-  gem 'bootstrap-sass'
 end
+
+gem 'haml-rails'
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'rails-i18n'
+gem 'kaminari-bootstrap', '~> 3.0.1'
+gem "font-awesome-rails"
+gem "bcrypt"
+gem 'ru_propisju'
+
 

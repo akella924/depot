@@ -8,4 +8,6 @@
     = csrf_meta_tags
     = link_to "Количество товаров: "+LineItem.count.to_s, line_items_path, class: "btn btn-info"
   %body
-    .container= yield
+    =render 'flash_messages'
+    =render(@cart) if @cart
+    =yield
